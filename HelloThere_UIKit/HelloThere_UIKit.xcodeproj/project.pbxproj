@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		436BBF712C661D47006FB717 /* MainPageCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BBF702C661D47006FB717 /* MainPageCommonUtils.swift */; };
+		436BBF742C661DDE006FB717 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BBF732C661DDE006FB717 /* AppBarView.swift */; };
 		43C861042C3D2168008A5A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C861032C3D2168008A5A8A /* AppDelegate.swift */; };
 		43C861062C3D2168008A5A8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C861052C3D2168008A5A8A /* SceneDelegate.swift */; };
 		43C861082C3D2168008A5A8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C861072C3D2168008A5A8A /* ViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		436BBF702C661D47006FB717 /* MainPageCommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageCommonUtils.swift; sourceTree = "<group>"; };
+		436BBF732C661DDE006FB717 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
 		43C861002C3D2168008A5A8A /* HelloThere_UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloThere_UIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C861032C3D2168008A5A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43C861052C3D2168008A5A8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		436BBF6F2C661D30006FB717 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				436BBF702C661D47006FB717 /* MainPageCommonUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		436BBF722C661DC7006FB717 /* MainPageViews */ = {
+			isa = PBXGroup;
+			children = (
+				436BBF732C661DDE006FB717 /* AppBarView.swift */,
+			);
+			path = MainPageViews;
+			sourceTree = "<group>";
+		};
 		43C860F72C3D2168008A5A8A = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +156,8 @@
 		43D1356F2C6615070024BCB1 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
+				436BBF722C661DC7006FB717 /* MainPageViews */,
+				436BBF6F2C661D30006FB717 /* Utils */,
 				43D135702C66154C0024BCB1 /* TabBarController.swift */,
 				43D135722C6615D10024BCB1 /* MainPageViewController.swift */,
 				43D135742C6615FE0024BCB1 /* ChatiingPageViewContoroller.swift */,
@@ -280,7 +302,9 @@
 				43D135712C66154C0024BCB1 /* TabBarController.swift in Sources */,
 				43D135732C6615D10024BCB1 /* MainPageViewController.swift in Sources */,
 				43C861042C3D2168008A5A8A /* AppDelegate.swift in Sources */,
+				436BBF712C661D47006FB717 /* MainPageCommonUtils.swift in Sources */,
 				43C861062C3D2168008A5A8A /* SceneDelegate.swift in Sources */,
+				436BBF742C661DDE006FB717 /* AppBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

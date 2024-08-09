@@ -8,31 +8,39 @@
 import UIKit
 
 class MainPageViewController: UIViewController {
+    
+    let contentViewFactory = MainPageCommonUtils()
+    
+    let containerView1 = UIView()
+    let topStackView = UIStackView()
+    let logoStackView = UIStackView()
+    let buttonStackView = UIStackView()
+    let scrollView = UIScrollView()
+    let firstPart = UIStackView()
+    let contentView = UIView()
+    let boardListPart = UIStackView()
+    let interiorBoardPart = UIStackView()
+    let garageSaleBoardPart = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let titleLabel = UILabel()
-        titleLabel.text = "메인 페이지"
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textAlignment = .center
+        self.view.backgroundColor = .white
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        view.addSubview(titleLabel)
+        let appBarView = AppBarView()
+        view.addSubview(appBarView)
         
-        let safeArea = view.safeAreaLayoutGuide
-        titleLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100).isActive = true
+        NSLayoutConstraint.activate([
+            appBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            appBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            appBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            ])
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+#Preview {
+    let vc = MainPageViewController()
+    return vc
 }
