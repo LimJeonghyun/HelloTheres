@@ -15,15 +15,15 @@ class MainPageCommonUtils {
         titlePart.alignment = .center
         titlePart.distribution = .equalCentering
         titlePart.translatesAutoresizingMaskIntoConstraints = false
-//        titlePart.backgroundColor = .systemPink
+        //        titlePart.backgroundColor = .systemPink
         
         titlePart.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:0)
         titlePart.isLayoutMarginsRelativeArrangement = true
         
         let title1 = UILabel()
         title1.text =  partName
-        title1.font = UIFont.systemFont(ofSize: 16)
-        title1.textColor = .black
+        title1.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        title1.textColor = UIColor(hexCode: "5D5D5D")
         
         let icon = UIImageView()
         icon.image = UIImage(named: "chervron-right")
@@ -48,7 +48,7 @@ class MainPageCommonUtils {
         let label = UILabel()
         label.text = text
         label.textAlignment = .left
-        label.tintColor = .black
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         
         let verticalStackView = UIStackView(arrangedSubviews: [imageView, label])
@@ -77,7 +77,7 @@ class MainPageCommonUtils {
         
         return contentView
     }
-
+    
     func boardList(boardName : String) -> UIStackView{
         let smallBoard = UIStackView()
         smallBoard.axis = .horizontal
@@ -85,37 +85,36 @@ class MainPageCommonUtils {
         smallBoard.distribution = .fillProportionally
         smallBoard.spacing = 5
         smallBoard.translatesAutoresizingMaskIntoConstraints = false
-//        smallBoard.backgroundColor = .systemCyan
+        //        smallBoard.backgroundColor = .systemCyan
         
         let icon = UIImageView()
         icon.image = UIImage(named : "icon_boardName")
+        
         
         let boardNameLabel = UILabel()
         boardNameLabel.adjustsFontSizeToFitWidth = true
         boardNameLabel.translatesAutoresizingMaskIntoConstraints = false
         boardNameLabel.font = UIFont.systemFont(ofSize: 12)
+        boardNameLabel.text = boardName
         boardNameLabel.minimumScaleFactor = 0.5
         boardNameLabel.textAlignment = .right
-        boardNameLabel.textColor = .green
-        boardNameLabel.text = String(boardName.prefix(10))
-        
-        let containerView = UIView()
-        containerView.backgroundColor = .lightGray
-        containerView.layer.cornerRadius = 8
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(boardNameLabel)
-        
-        
+        boardNameLabel.textColor = UIColor(hexCode: "2BCBA5")
+
+
+        // 간격을 맞출 수 있는 방법이 없는 듯 하다..
+        var word = 9
+        if boardName.count <= 7 {
+            word = Int(13)
+        }
+        let str = String(repeating: " ", count: (word - boardName.count))
+
         let title = UILabel()
-        title.adjustsFontSizeToFitWidth = true
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 12)
         title.minimumScaleFactor = 0.5
-        title.textColor = .gray
+        title.textColor = UIColor(hexCode: "8F8F8F")
         title.textAlignment = .right
-        let text = " |   테스트"
-        title.text = String(text.prefix(10))
-        
+        title.text =   str + "|   테스트"
         
         smallBoard.addArrangedSubview(icon)
         smallBoard.addArrangedSubview(boardNameLabel)
