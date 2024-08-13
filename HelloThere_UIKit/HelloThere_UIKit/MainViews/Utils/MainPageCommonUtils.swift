@@ -8,6 +8,7 @@
 import UIKit
 
 class MainPageCommonUtils {
+    let api = RequestApi()
     
     func boardTitle(partName : String) -> UIStackView {
         let titlePart = UIStackView()
@@ -35,19 +36,19 @@ class MainPageCommonUtils {
         return titlePart
     }
     
-    func createContentView(imageName: String, text: String) -> UIView {
+    func createInteriorContentView(imageName: String, text: String) -> UIView {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         let imageView = UIImageView()
         imageView.image = UIImage(named: imageName)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let label = UILabel()
         label.text = text
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -55,21 +56,60 @@ class MainPageCommonUtils {
         verticalStackView.axis = .vertical
         verticalStackView.spacing = 5
         verticalStackView.alignment = .fill
-        verticalStackView.distribution = .fill
+        verticalStackView.distribution = .fillProportionally
+        verticalStackView.alignment = .leading
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(verticalStackView)
         
-        // verticalStackView 제약조건 설정
+        
         NSLayoutConstraint.activate([
             verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             verticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             verticalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             verticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            imageView.heightAnchor.constraint(equalToConstant: 150),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
+            label.heightAnchor.constraint(equalToConstant: 20)
         ])
         
-        // 이미지와 텍스트의 크기 설정
+        return contentView
+    }
+    
+    func createGarageSaleContentView(imageName: String, text: String) -> UIView {
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: imageName)
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let label = UILabel()
+        label.text = text
+        label.textAlignment = .center
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let verticalStackView = UIStackView(arrangedSubviews: [imageView, label])
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = 5
+        verticalStackView.alignment = .fill
+        verticalStackView.distribution = .fillProportionally
+        verticalStackView.alignment = .leading
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(verticalStackView)
+        
+        
         NSLayoutConstraint.activate([
+            verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            verticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            verticalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            verticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
             imageView.heightAnchor.constraint(equalToConstant: 150),
             imageView.widthAnchor.constraint(equalToConstant: 100),
             label.heightAnchor.constraint(equalToConstant: 20)
@@ -99,22 +139,24 @@ class MainPageCommonUtils {
         boardNameLabel.minimumScaleFactor = 0.5
         boardNameLabel.textAlignment = .right
         boardNameLabel.textColor = UIColor(hexCode: "2BCBA5")
-
-
+        
+        
         // 간격을 맞출 수 있는 방법이 없는 듯 하다..
         var word = 9
         if boardName.count <= 7 {
             word = Int(13)
         }
         let str = String(repeating: " ", count: (word - boardName.count))
-
+        
+        
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 12)
         title.minimumScaleFactor = 0.5
         title.textColor = UIColor(hexCode: "8F8F8F")
         title.textAlignment = .right
-        title.text =   str + "|   테스트"
+        title.text =   str + api.getRecentPostTitle(boardName: boardName)
+        
         
         smallBoard.addArrangedSubview(icon)
         smallBoard.addArrangedSubview(boardNameLabel)
@@ -122,5 +164,7 @@ class MainPageCommonUtils {
         
         return smallBoard
     }
+    
+    
     
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class TopPartView: UIView {
+    let api = RequestApi()
     var popularPosts : [String] = []
     
     init(contentView: UIView) {
@@ -54,7 +55,7 @@ class TopPartView: UIView {
         popularBoardListPart.translatesAutoresizingMaskIntoConstraints = false
         
         
-        readPopularPosts()
+        popularPosts = api.getPopularPosts()
         for title in popularPosts {
             let titleLabel = UILabel()
             titleLabel.text = title
@@ -79,8 +80,8 @@ class TopPartView: UIView {
         maintenancePart.addArrangedSubview(titlePart(titlename: "이달의 관리비", icon: "icon_maintenanceCost"))
         
         
-        maintenancePart.addArrangedSubview(getMyMaintenanceState())
-        maintenancePart.addArrangedSubview(getMyMaintenanceCost())
+        maintenancePart.addArrangedSubview(api.getMyMaintenanceState())
+        maintenancePart.addArrangedSubview(api.getMyMaintenanceCost())
         
         
         topPartStackView.addArrangedSubview(maintenancePart)
@@ -88,66 +89,21 @@ class TopPartView: UIView {
         topPartContainerView.addSubview(topPartStackView)
         contentView.addSubview(topPartContainerView)
         
-       
+        
         
         NSLayoutConstraint.activate([
             topPartContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             topPartContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             topPartContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             topPartContainerView.bottomAnchor.constraint(equalTo: topPartStackView.bottomAnchor, constant: 20),
-       
+            
             topPartStackView.topAnchor.constraint(equalTo: topPartContainerView.topAnchor, constant: 30),
             topPartStackView.leadingAnchor.constraint(equalTo: topPartContainerView.leadingAnchor, constant: 20),
             topPartStackView.trailingAnchor.constraint(equalTo: topPartContainerView.trailingAnchor, constant: -20),
-//
+            
             
             popularBoardListPart.leadingAnchor.constraint(equalTo: topPartStackView.leadingAnchor, constant: 20)
         ])
-    }
-    
-    
-    // API로 인기 게시물 내용을 가져올 때 해당 함수를 사용
-    // 지금은 메인 페이지에 올 때마다 갱신하지만 하루에 한번만 실행할 수 있도록 하는 부분도 고려해보기
-    func readPopularPosts(){
-        for i in 1...4 {
-            popularPosts.append("title" + String(i))
-        }
-    }
-    
-    func getMyMaintenanceState() -> UIImageView {
-        var payState = true
-        // API로 미납 / 완납 여부를 받아와서 payState 변수로 저장
-        
-        let stateImage = UIImageView()
-        if payState {
-            stateImage.image = UIImage(named: "icon_fullPayment")
-        }
-        else {
-            stateImage.image = UIImage(named: "icon_nonPayment")
-        }
-        
-        return stateImage
-    }
-    
-    func getMyMaintenanceCost() -> UILabel{
-        var cost = "15799"
-        
-        let attributedString = NSMutableAttributedString(string: cost + " 원")
-        let stringLength = attributedString.length
-        
-        attributedString.addAttributes([
-            .foregroundColor : UIColor(hexCode: "2BCBA5"), .font:UIFont.systemFont(ofSize: 17, weight: .bold)],
-                                       range: NSRange(location: 0, length : stringLength - 2)
-        )
-        attributedString.addAttributes([
-            .foregroundColor : UIColor(hexCode: "8F8F8F"), .font:UIFont.systemFont(ofSize: 17, weight: .bold)],
-                                       range: NSRange(location: stringLength - 2, length : 2)
-        )
-        
-        let stateLabel = UILabel()
-        stateLabel.attributedText = attributedString
-        
-        return stateLabel
     }
     
     

@@ -8,7 +8,8 @@
 import UIKit
 
 class AppBarView: UIStackView {
-
+    let api = RequestApi()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -26,7 +27,7 @@ class AppBarView: UIStackView {
         spacing = 10
         translatesAutoresizingMaskIntoConstraints = false
         // autolayout을 사용할 때는 false로 설정
-//        backgroundColor = .cyan
+        //        backgroundColor = .cyan
         
         
         let logoStackView = UIStackView()
@@ -35,7 +36,7 @@ class AppBarView: UIStackView {
         logoStackView.spacing = 10
         logoStackView.distribution = .fillProportionally
         logoStackView.translatesAutoresizingMaskIntoConstraints = false
-//        logoStackView.backgroundColor = .brown
+        //        logoStackView.backgroundColor = .brown
         
         
         let buttonStackView = UIStackView()
@@ -44,21 +45,21 @@ class AppBarView: UIStackView {
         buttonStackView.spacing = 10
         buttonStackView.distribution = .fillEqually
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-//        buttonStackView.backgroundColor = .orange
+        //        buttonStackView.backgroundColor = .orange
         
         let logo = UIImageView()
         logo.image = UIImage(named: "logo_noHand")
         logo.contentMode = .scaleAspectFit
         
-        
+        let userAddressInfo = api.getUserAddress()
         let aptNameLabel = UILabel()
-        aptNameLabel.text = "테스트 오피스텔"
+        aptNameLabel.text = userAddressInfo[0]
         aptNameLabel.textAlignment = .left
         aptNameLabel.font = aptNameLabel.font.withSize(22)
         aptNameLabel.textColor = .black
         
         let userAddress = UILabel()
-        userAddress.text = "테스트시 테스트구 테스트동 123-45 123호"
+        userAddress.text = userAddressInfo[1]
         userAddress.textAlignment = .left
         userAddress.font = userAddress.font.withSize(12)
         userAddress.textColor = .black
@@ -77,7 +78,6 @@ class AppBarView: UIStackView {
         
         buttonStackView.addArrangedSubview(searchButton)
         buttonStackView.addArrangedSubview(notiButton)
-        
         
         addArrangedSubview(logoStackView)
         addArrangedSubview(buttonStackView)

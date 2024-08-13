@@ -8,9 +8,11 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupStyle()
         
         let vc1 = ChattingPageViewController()
         let vc2 = MainPageViewController()
@@ -40,5 +42,10 @@ class TabBarController: UITabBarController {
         let nav3 = UINavigationController(rootViewController: vc3)
         
         setViewControllers([nav1, nav2, nav3], animated: false)
+    }
+    
+    func setupStyle() {
+        UITabBar.clearShadow()
+        tabBar.layer.applyShadow(color: .gray, alpha: 0.5, x: 0, y: 0, blur: 12)
     }
 }

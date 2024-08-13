@@ -13,7 +13,7 @@ class MainPageViewController: UIViewController {
     
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
-    
+    //    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,15 +23,15 @@ class MainPageViewController: UIViewController {
         
         let appBarView = AppBarView()
         view.addSubview(appBarView)
-        
+        //        
         scrollContent()
-        
+        //        
         view.addSubview(scrollView)
         
         let topPartView = TopPartView(contentView: scrollContentView)
         topPartView.translatesAutoresizingMaskIntoConstraints = false
         scrollContentView.addSubview(topPartView)
-        
+        //        
         
         let boardPartView = BoardPartView(contentView: scrollContentView, belowView: topPartView)
         boardPartView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class MainPageViewController: UIViewController {
             appBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             appBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             appBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
+            //            
             scrollView.topAnchor.constraint(equalTo: appBarView.bottomAnchor, constant:10),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -84,7 +84,7 @@ class MainPageViewController: UIViewController {
             interiorPartView.topAnchor.constraint(equalTo: boardPartView.bottomAnchor, constant: 30),
             interiorPartView.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor, constant: 15),
             interiorPartView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
-
+            
             
             garageSalePartView.topAnchor.constraint(equalTo: interiorPartView.bottomAnchor, constant: 30),
             garageSalePartView.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor, constant: 15),

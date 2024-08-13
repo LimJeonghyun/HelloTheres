@@ -55,6 +55,5 @@ class BoardPartView: UIView {
             boardPartStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             boardPartStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20)
         ])
-        
     }
 }

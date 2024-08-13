@@ -22,6 +22,8 @@
 		43C8611B2C3D216C008A5A8A /* HelloThere_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C8611A2C3D216C008A5A8A /* HelloThere_UIKitTests.swift */; };
 		43C861252C3D216C008A5A8A /* HelloThere_UIKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C861242C3D216C008A5A8A /* HelloThere_UIKitUITests.swift */; };
 		43C861272C3D216C008A5A8A /* HelloThere_UIKitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C861262C3D216C008A5A8A /* HelloThere_UIKitUITestsLaunchTests.swift */; };
+		43C86F292C6B18DE002C76C6 /* RequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C86F282C6B18DE002C76C6 /* RequestApi.swift */; };
+		43C86F2B2C6B38BD002C76C6 /* TabBarCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C86F2A2C6B38BD002C76C6 /* TabBarCustom.swift */; };
 		43D135712C66154C0024BCB1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D135702C66154C0024BCB1 /* TabBarController.swift */; };
 		43D135732C6615D10024BCB1 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D135722C6615D10024BCB1 /* MainPageViewController.swift */; };
 		43D135752C6615FE0024BCB1 /* ChatiingPageViewContoroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D135742C6615FE0024BCB1 /* ChatiingPageViewContoroller.swift */; };
@@ -65,6 +67,8 @@
 		43C861202C3D216C008A5A8A /* HelloThere_UIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloThere_UIKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C861242C3D216C008A5A8A /* HelloThere_UIKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloThere_UIKitUITests.swift; sourceTree = "<group>"; };
 		43C861262C3D216C008A5A8A /* HelloThere_UIKitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloThere_UIKitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		43C86F282C6B18DE002C76C6 /* RequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestApi.swift; sourceTree = "<group>"; };
+		43C86F2A2C6B38BD002C76C6 /* TabBarCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCustom.swift; sourceTree = "<group>"; };
 		43D135702C66154C0024BCB1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		43D135722C6615D10024BCB1 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		43D135742C6615FE0024BCB1 /* ChatiingPageViewContoroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatiingPageViewContoroller.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				433FA0A02C69D2A800AC709F /* HexColor.swift */,
+				43C86F2A2C6B38BD002C76C6 /* TabBarCustom.swift */,
+				43C86F282C6B18DE002C76C6 /* RequestApi.swift */,
 			);
 			path = CommonUtils;
 			sourceTree = "<group>";
@@ -321,7 +327,9 @@
 			files = (
 				43D135752C6615FE0024BCB1 /* ChatiingPageViewContoroller.swift in Sources */,
 				433FA0A72C69EC3D00AC709F /* GarageSalePartView.swift in Sources */,
+				43C86F292C6B18DE002C76C6 /* RequestApi.swift in Sources */,
 				43C861082C3D2168008A5A8A /* ViewController.swift in Sources */,
+				43C86F2B2C6B38BD002C76C6 /* TabBarCustom.swift in Sources */,
 				433FA0A12C69D2A800AC709F /* HexColor.swift in Sources */,
 				433FA0A52C69E96100AC709F /* InteriorPartView.swift in Sources */,
 				43D135772C66161F0024BCB1 /* MyPageViewController.swift in Sources */,
