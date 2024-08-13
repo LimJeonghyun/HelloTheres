@@ -16,30 +16,14 @@ UMC 동아리 4기로 진행하며 진행했던 프로젝트를 UIKit, SwiftUI, 
 ## 개발 기간
 #### 2024.7.10 ~ 
 
-  <br>
-  <br>
+<br>
+<br>
 
 # 프로젝트 소개 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/0ff5522b-f152-4463-b7ec-a02c67196754" width="40" height="30">
 
 대학생 연합 동아리 UMC [University MakeUs Challenge] 4기에 참여하여 프로젝트를 진행했습니다   
 Hello There은 이웃과 소통하기 위한 공동주택 커뮤니티 어플입니다   
 세대 간 소음 문제 심화와 1인 가구 고독사 증가 등 사회적 이슈를 해결을 위해 6가지 목표를 가지고 어플을 개발하였습니다  
-
-<br>
-
-> **나눔**: 사용하지 않는 물건, 식료품 등을 쉽고 간단하게 나누기
-> 
-> **정보**: 주변 맛집, 병원, 여가시설 등에 대한 정보 얻기
-> 
-> **친목**: 이웃과 친목 다지기
-> 
-> **공동구매**: 물건 저렴하게 구매하기
-> 
-> **인테리어**: 인테리어/생활에 다양한 팁 공유하기
-> 
-> **갈등해소**: 겪고 있는 불편함을 원만하게 해결하기
-> 
-> **친목**: 이웃과 친목 다지기   
 
 <br>
 <br>
@@ -65,10 +49,12 @@ Hello There은 이웃과 소통하기 위한 공동주택 커뮤니티 어플입
 어플의 메인화면으로 인기 게시물, 관리비, 7가지 주제 게시판, 오늘의 홈테리어와 중고장터를 확인할 수 있습니다   
 
 <br>
-
+           - before -                   - after -
+<br>
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/0875bf2a-8531-404e-9a3c-8656a223ef12" width="200" height="400">
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/ebc6d5f5-ce1e-483c-8c7a-ac1e51e00e91" width="200" height="400">
-
+   
+<img src="https://github.com/user-attachments/assets/8596ebc5-b417-4486-88ca-7a6578221d59" width="200" height="400">
 <br>
 <br>
 
@@ -169,7 +155,7 @@ Hello There은 이웃과 소통하기 위한 공동주택 커뮤니티 어플입
 
 
 # 개발 스택 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/0ff5522b-f152-4463-b7ec-a02c67196754" width="40" height="30"> 
-- **Front-end:** Swift
+- **Front-end:** Swift(UIKit)
 - **Library:** NaverMap API
 - **협업 관리:** Notion, Github, Figma
 
