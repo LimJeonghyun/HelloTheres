@@ -164,7 +164,4 @@ class MainPageCommonUtils {
         
         return smallBoard
     }
-    
-    
-    
 }

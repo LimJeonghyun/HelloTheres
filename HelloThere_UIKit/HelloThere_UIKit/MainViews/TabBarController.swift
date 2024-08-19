@@ -41,7 +41,11 @@ class TabBarController: UITabBarController {
         let nav2 = UINavigationController(rootViewController: vc2)
         let nav3 = UINavigationController(rootViewController: vc3)
         
-        setViewControllers([nav1, nav2, nav3], animated: false)
+        nav1.tabBarItem = UITabBarItem(title: nil, image: originalImage1, selectedImage: selectedImage1)
+        nav2.tabBarItem = UITabBarItem(title: nil, image: originalImage2, selectedImage: selectedImage2)
+        nav3.tabBarItem = UITabBarItem(title: nil, image: originalImage3, selectedImage: selectedImage3)
+        
+        self.viewControllers = [nav1, nav2, nav3]
     }
     
     func setupStyle() {

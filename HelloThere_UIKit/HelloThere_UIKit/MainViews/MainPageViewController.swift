@@ -7,13 +7,11 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
-    
-    let contentViewFactory = MainPageCommonUtils()
+class MainPageViewController: UIViewController, NavigationDelegate {
     
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
-    //    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,28 +20,33 @@ class MainPageViewController: UIViewController {
         // 상단 navigationBar로 인한 빈 공간 없애기
         
         let appBarView = AppBarView()
+        appBarView.isUserInteractionEnabled = true
         view.addSubview(appBarView)
-        //        
+        
         scrollContent()
-        //        
+        
         view.addSubview(scrollView)
         
         let topPartView = TopPartView(contentView: scrollContentView)
+        topPartView.navigationDelegate = self
         topPartView.translatesAutoresizingMaskIntoConstraints = false
         scrollContentView.addSubview(topPartView)
-        //        
+        
         
         let boardPartView = BoardPartView(contentView: scrollContentView, belowView: topPartView)
+        boardPartView.navigationDelegate = self
         boardPartView.translatesAutoresizingMaskIntoConstraints = false
         scrollContentView.addSubview(boardPartView)
         
         
         let interiorPartView = InteriorPartView(contentView: scrollContentView, belowView: boardPartView)
+        interiorPartView.navigateDelegate = self
         interiorPartView.translatesAutoresizingMaskIntoConstraints = false
         scrollContentView.addSubview(interiorPartView)
         
         
         let garageSalePartView = GarageSalePartView(contentView: scrollContentView, belowView: interiorPartView)
+        garageSalePartView.navigateDelegate = self
         garageSalePartView.translatesAutoresizingMaskIntoConstraints = false
         interiorPartView.layer.borderColor = UIColor.systemPink.cgColor
         interiorPartView.layer.borderWidth = 5.0
@@ -55,7 +58,7 @@ class MainPageViewController: UIViewController {
             appBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             appBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             appBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            //            
+            
             scrollView.topAnchor.constraint(equalTo: appBarView.bottomAnchor, constant:10),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -100,10 +103,33 @@ class MainPageViewController: UIViewController {
         
         scrollView.addSubview(scrollContentView)
     }
+    
+    func navigateToNextPage() {
+        print("nextPage here")
+        
+        let nextViewController = MaintenanceMainViewController()
+        self.navigationController?.pushViewController(nextViewController, animated: false)
+    }
+    
+    func navigateToBoardDetailPage(with title: String) {
+        print("boardDetailPage here")
+        
+        let nextViewController = PostDetailViewController()
+        nextViewController.receivedData = title
+        self.navigationController?.pushViewController(nextViewController, animated: false)
+    }
+    
+    func navigateToBoardListPage(with boardName: String) {
+        print("boardListPage here")
+        
+        let nextViewController = BoardListViewController()
+        nextViewController.receivedData = boardName
+        self.navigationController?.pushViewController(nextViewController, animated: false)
+    }
 }
 
 
 #Preview {
-    let vc = MainPageViewController()
+    let vc = ViewController()
     return vc
 }

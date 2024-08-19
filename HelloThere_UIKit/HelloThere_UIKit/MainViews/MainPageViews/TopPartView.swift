@@ -7,9 +7,10 @@
 
 import UIKit
 
-class TopPartView: UIView {
+class TopPartView: UIView, UIGestureRecognizerDelegate {
     let api = RequestApi()
     var popularPosts : [String] = []
+    weak var navigationDelegate : NavigationDelegate?
     
     init(contentView: UIView) {
         super.init(frame: .zero)
@@ -32,11 +33,10 @@ class TopPartView: UIView {
         topPartStackView.isLayoutMarginsRelativeArrangement = true
         
         
-        let topPartContainerView = UIView()
-        topPartContainerView.translatesAutoresizingMaskIntoConstraints = false
-        topPartContainerView.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
-        topPartContainerView.layer.borderWidth = 2.0
-        topPartContainerView.layer.cornerRadius = 20.0
+        translatesAutoresizingMaskIntoConstraints = false
+        layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
+        layer.borderWidth = 2.0
+        layer.cornerRadius = 20.0
         
         
         let popularBoardPart = UIStackView()
@@ -56,11 +56,17 @@ class TopPartView: UIView {
         
         
         popularPosts = api.getPopularPosts()
-        for title in popularPosts {
+        for postTitle in popularPosts {
             let titleLabel = UILabel()
-            titleLabel.text = title
+            titleLabel.text = postTitle
             titleLabel.font = UIFont.systemFont(ofSize: 11)
             titleLabel.textColor = UIColor(hexCode: "5D5D5D")
+            
+            titleLabel.isUserInteractionEnabled = true
+            let tapGestureLabel = BoardTapGesture(target : self, action : #selector(labelTapped(_:)))
+            tapGestureLabel.data = postTitle
+            titleLabel.addGestureRecognizer(tapGestureLabel)
+            
             popularBoardListPart.addArrangedSubview(titleLabel)
         }
         
@@ -86,20 +92,24 @@ class TopPartView: UIView {
         
         topPartStackView.addArrangedSubview(maintenancePart)
         
-        topPartContainerView.addSubview(topPartStackView)
-        contentView.addSubview(topPartContainerView)
+        self.addSubview(topPartStackView)
+        contentView.addSubview(self)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(stackViewTapped))
+        tapGesture.cancelsTouchesInView = false
+        maintenancePart.addGestureRecognizer(tapGesture)
         
         
         
         NSLayoutConstraint.activate([
-            topPartContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
-            topPartContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            topPartContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            topPartContainerView.bottomAnchor.constraint(equalTo: topPartStackView.bottomAnchor, constant: 20),
+            self.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            self.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            self.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            self.bottomAnchor.constraint(equalTo: topPartStackView.bottomAnchor, constant: 20),
             
-            topPartStackView.topAnchor.constraint(equalTo: topPartContainerView.topAnchor, constant: 30),
-            topPartStackView.leadingAnchor.constraint(equalTo: topPartContainerView.leadingAnchor, constant: 20),
-            topPartStackView.trailingAnchor.constraint(equalTo: topPartContainerView.trailingAnchor, constant: -20),
+            topPartStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
+            topPartStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            topPartStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
             
             popularBoardListPart.leadingAnchor.constraint(equalTo: topPartStackView.leadingAnchor, constant: 20)
@@ -131,5 +141,17 @@ class TopPartView: UIView {
         
         
         return titlePart
+    }
+    
+    @objc func labelTapped(_ sender: BoardTapGesture) {
+        print("toppart label clicked")
+        if let data = sender.data {
+            navigationDelegate?.navigateToBoardDetailPage(with: data)
+        }
+    }
+    
+    @objc func stackViewTapped() {
+        print("toppart stackView clicked")
+        navigationDelegate?.navigateToNextPage()
     }
 }
