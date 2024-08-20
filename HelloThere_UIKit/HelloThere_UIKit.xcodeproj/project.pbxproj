@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43388EA32C7331B100E65FEA /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43388EA22C7331B100E65FEA /* NavigationDelegate.swift */; };
+		43388EA62C73341400E65FEA /* MaintenanceMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43388EA52C73341400E65FEA /* MaintenanceMainViewController.swift */; };
+		43388EAB2C7334B800E65FEA /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43388EAA2C7334B800E65FEA /* PostDetailViewController.swift */; };
+		43388EAE2C73387C00E65FEA /* BoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43388EAD2C73387C00E65FEA /* BoardListViewController.swift */; };
 		433FA09E2C69C59400AC709F /* TopPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FA09D2C69C59400AC709F /* TopPartView.swift */; };
 		433FA0A12C69D2A800AC709F /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FA0A02C69D2A800AC709F /* HexColor.swift */; };
 		433FA0A32C69DBF600AC709F /* BoardPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FA0A22C69DBF600AC709F /* BoardPartView.swift */; };
@@ -48,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43388EA22C7331B100E65FEA /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
+		43388EA52C73341400E65FEA /* MaintenanceMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceMainViewController.swift; sourceTree = "<group>"; };
+		43388EAA2C7334B800E65FEA /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		43388EAD2C73387C00E65FEA /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
 		433FA09D2C69C59400AC709F /* TopPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPartView.swift; sourceTree = "<group>"; };
 		433FA0A02C69D2A800AC709F /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		433FA0A22C69DBF600AC709F /* BoardPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPartView.swift; sourceTree = "<group>"; };
@@ -100,6 +108,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43388EA12C73317700E65FEA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				43388EA22C7331B100E65FEA /* NavigationDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		43388EA42C7333EC00E65FEA /* DetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				43388EA92C73348D00E65FEA /* BoardViews */,
+				43388EA82C73343500E65FEA /* MaintenanceViews */,
+			);
+			path = DetailViews;
+			sourceTree = "<group>";
+		};
+		43388EA82C73343500E65FEA /* MaintenanceViews */ = {
+			isa = PBXGroup;
+			children = (
+				43388EA52C73341400E65FEA /* MaintenanceMainViewController.swift */,
+			);
+			path = MaintenanceViews;
+			sourceTree = "<group>";
+		};
+		43388EA92C73348D00E65FEA /* BoardViews */ = {
+			isa = PBXGroup;
+			children = (
+				43388EAA2C7334B800E65FEA /* PostDetailViewController.swift */,
+				43388EAD2C73387C00E65FEA /* BoardListViewController.swift */,
+			);
+			path = BoardViews;
+			sourceTree = "<group>";
+		};
 		433FA09F2C69D29300AC709F /* CommonUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +198,8 @@
 				43C861032C3D2168008A5A8A /* AppDelegate.swift */,
 				43C861052C3D2168008A5A8A /* SceneDelegate.swift */,
 				43C861072C3D2168008A5A8A /* ViewController.swift */,
+				43388EA42C7333EC00E65FEA /* DetailViews */,
+				43388EA12C73317700E65FEA /* Protocols */,
 				433FA09F2C69D29300AC709F /* CommonUtils */,
 				43D1356F2C6615070024BCB1 /* MainViews */,
 				43C8610C2C3D216B008A5A8A /* Assets.xcassets */,
@@ -331,16 +375,20 @@
 				43C861082C3D2168008A5A8A /* ViewController.swift in Sources */,
 				43C86F2B2C6B38BD002C76C6 /* TabBarCustom.swift in Sources */,
 				433FA0A12C69D2A800AC709F /* HexColor.swift in Sources */,
+				43388EAB2C7334B800E65FEA /* PostDetailViewController.swift in Sources */,
 				433FA0A52C69E96100AC709F /* InteriorPartView.swift in Sources */,
 				43D135772C66161F0024BCB1 /* MyPageViewController.swift in Sources */,
 				433FA0A32C69DBF600AC709F /* BoardPartView.swift in Sources */,
 				43D135712C66154C0024BCB1 /* TabBarController.swift in Sources */,
+				43388EAE2C73387C00E65FEA /* BoardListViewController.swift in Sources */,
 				43D135732C6615D10024BCB1 /* MainPageViewController.swift in Sources */,
+				43388EA32C7331B100E65FEA /* NavigationDelegate.swift in Sources */,
 				43C861042C3D2168008A5A8A /* AppDelegate.swift in Sources */,
 				433FA09E2C69C59400AC709F /* TopPartView.swift in Sources */,
 				436BBF712C661D47006FB717 /* MainPageCommonUtils.swift in Sources */,
 				43C861062C3D2168008A5A8A /* SceneDelegate.swift in Sources */,
 				436BBF742C661DDE006FB717 /* AppBarView.swift in Sources */,
+				43388EA62C73341400E65FEA /* MaintenanceMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

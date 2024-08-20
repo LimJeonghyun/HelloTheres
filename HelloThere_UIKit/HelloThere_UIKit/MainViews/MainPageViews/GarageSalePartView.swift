@@ -7,32 +7,38 @@
 
 import UIKit
 
-class GarageSalePartView: UIView {
+class GarageSalePartView: UIStackView {
     let utils = MainPageCommonUtils()
     let api = RequestApi()
+    weak var navigateDelegate : NavigationDelegate?
     
     init(contentView: UIView, belowView: UIView) {
         super.init(frame: .zero)
         setupView(contentView: contentView, belowView: belowView)
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView(contentView: UIView(), belowView: UIView())
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func setupView(contentView: UIView, belowView: UIView) {
-        let garageSaleBoardPart = UIStackView()
-        garageSaleBoardPart.axis = .vertical
-        garageSaleBoardPart.alignment = .leading
-        garageSaleBoardPart.spacing = 20
-        garageSaleBoardPart.distribution = .fillProportionally
-        garageSaleBoardPart.translatesAutoresizingMaskIntoConstraints = false
-        //        garageSaleBoardPart.backgroundColor = .orange
+        axis = .vertical
+        alignment = .leading
+        spacing = 20
+        distribution = .fillProportionally
+        translatesAutoresizingMaskIntoConstraints = false
         
         
         let boardTitle = utils.boardTitle(partName: "중고장터")
-        garageSaleBoardPart.addArrangedSubview(boardTitle)
+        boardTitle.isUserInteractionEnabled = true
+        let tapGesture = BoardTapGesture(target: self, action: #selector(boardTapped(_:)))
+        tapGesture.data = "중고장터"
+        boardTitle.addGestureRecognizer(tapGesture)
+        
+        
+        self.addArrangedSubview(boardTitle)
+        
         
         let boardScrollView = UIScrollView()
         boardScrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,21 +52,39 @@ class GarageSalePartView: UIView {
         boardStackView.distribution = .fillEqually
         
         boardScrollView.addSubview(boardStackView)
-        garageSaleBoardPart.addArrangedSubview(boardScrollView)
-        contentView.addSubview(garageSaleBoardPart)
+        self.addArrangedSubview(boardScrollView)
+        contentView.addSubview(self)
         
         var contents = api.getRecentGarageSalePost()
         
         for i in 0...6 {
             let contentView = utils.createGarageSaleContentView(imageName:contents[i][0], text: contents[i][1])
+            
+            if (i < 6) {
+                contentView.isUserInteractionEnabled = true
+                let tapGestureLabel = BoardTapGesture(target: self, action: #selector(labelTapped(_:)))
+                tapGestureLabel.data = contents[i][1]
+                contentView.addGestureRecognizer(tapGestureLabel)
+                
+                boardStackView.addArrangedSubview(contentView)
+            }
+            else{
+                contentView.isUserInteractionEnabled = true
+                let tapGestureLabel = BoardTapGesture(target: self, action: #selector(boardTapped(_:)))
+                tapGestureLabel.data = "중고장터"
+                contentView.addGestureRecognizer(tapGestureLabel)
+                
+                boardStackView.addArrangedSubview(contentView)
+            }
+            
             boardStackView.addArrangedSubview(contentView)
         }
         
         
         
         NSLayoutConstraint.activate([
-            boardScrollView.leadingAnchor.constraint(equalTo: garageSaleBoardPart.leadingAnchor),
-            boardScrollView.trailingAnchor.constraint(equalTo: garageSaleBoardPart.trailingAnchor),
+            boardScrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            boardScrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             boardScrollView.topAnchor.constraint(equalTo: boardTitle.bottomAnchor, constant: 30),
             boardScrollView.heightAnchor.constraint(equalToConstant: 150),
             
@@ -71,11 +95,26 @@ class GarageSalePartView: UIView {
             boardStackView.heightAnchor.constraint(equalTo: boardScrollView.heightAnchor),
             boardStackView.widthAnchor.constraint(equalToConstant: 700),
             
-            garageSaleBoardPart.topAnchor.constraint(equalTo: belowView.bottomAnchor, constant: 30),
-            garageSaleBoardPart.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            garageSaleBoardPart.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            self.topAnchor.constraint(equalTo: belowView.bottomAnchor, constant: 30),
+            self.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            self.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
         ])
+    }
+    
+    @objc func boardTapped(_ sender : BoardTapGesture) {
+        print("board garageSale clicked")
         
+        if let data = sender.data {
+            navigateDelegate?.navigateToBoardListPage(with: data)
+        }
+    }
+    
+    @objc func labelTapped(_ sender : BoardTapGesture) {
+        print("boardGarageSlae detail clicked")
+        
+        if let data = sender.data {
+            navigateDelegate?.navigateToBoardDetailPage(with: data)
+        }
     }
 }
