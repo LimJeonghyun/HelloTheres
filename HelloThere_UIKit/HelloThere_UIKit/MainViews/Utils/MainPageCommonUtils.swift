@@ -16,7 +16,6 @@ class MainPageCommonUtils {
         titlePart.alignment = .center
         titlePart.distribution = .equalCentering
         titlePart.translatesAutoresizingMaskIntoConstraints = false
-        //        titlePart.backgroundColor = .systemPink
         
         titlePart.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:0)
         titlePart.isLayoutMarginsRelativeArrangement = true

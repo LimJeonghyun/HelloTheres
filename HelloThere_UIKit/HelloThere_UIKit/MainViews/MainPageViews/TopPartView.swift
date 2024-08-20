@@ -124,7 +124,6 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         titlePart.alignment = .center
         titlePart.distribution = .equalCentering
         titlePart.translatesAutoresizingMaskIntoConstraints = false
-        //        titlePart.backgroundColor = .systemPink
         
         
         let popularIcon = UIImageView()

@@ -27,7 +27,6 @@ class AppBarView: UIStackView {
         spacing = 10
         translatesAutoresizingMaskIntoConstraints = false
         // autolayout을 사용할 때는 false로 설정
-        //        backgroundColor = .cyan
         
         
         let logoStackView = UIStackView()
@@ -36,7 +35,6 @@ class AppBarView: UIStackView {
         logoStackView.spacing = 10
         logoStackView.distribution = .fillProportionally
         logoStackView.translatesAutoresizingMaskIntoConstraints = false
-        //        logoStackView.backgroundColor = .brown
         
         
         let buttonStackView = UIStackView()
@@ -45,7 +43,6 @@ class AppBarView: UIStackView {
         buttonStackView.spacing = 10
         buttonStackView.distribution = .fillEqually
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        //        buttonStackView.backgroundColor = .orange
         
         let logo = UIImageView()
         logo.image = UIImage(named: "logo_noHand")

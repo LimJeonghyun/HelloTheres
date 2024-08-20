@@ -28,7 +28,6 @@ class GarageSalePartView: UIStackView {
         spacing = 20
         distribution = .fillProportionally
         translatesAutoresizingMaskIntoConstraints = false
-        //        garageSaleBoardPart.backgroundColor = .orange
         
         
         let boardTitle = utils.boardTitle(partName: "중고장터")
@@ -37,7 +36,9 @@ class GarageSalePartView: UIStackView {
         tapGesture.data = "중고장터"
         boardTitle.addGestureRecognizer(tapGesture)
         
+        
         self.addArrangedSubview(boardTitle)
+        
         
         let boardScrollView = UIScrollView()
         boardScrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +104,7 @@ class GarageSalePartView: UIStackView {
     
     @objc func boardTapped(_ sender : BoardTapGesture) {
         print("board garageSale clicked")
-
+        
         if let data = sender.data {
             navigateDelegate?.navigateToBoardListPage(with: data)
         }

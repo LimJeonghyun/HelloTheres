@@ -29,7 +29,6 @@ class InteriorPartView: UIView {
         interiorBoardPart.spacing = 20
         interiorBoardPart.distribution = .fillProportionally
         interiorBoardPart.translatesAutoresizingMaskIntoConstraints = false
-        //        interiorBoardPart.backgroundColor = .orange
         
         
         let boardTitle = utils.boardTitle(partName: "오늘의 홈테리어")
@@ -38,7 +37,9 @@ class InteriorPartView: UIView {
         tapGesture.data = "오늘의 홈테리어"
         boardTitle.addGestureRecognizer(tapGesture)
         
+        
         interiorBoardPart.addArrangedSubview(boardTitle)
+        
         
         let boardScrollView = UIScrollView()
         boardScrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -111,16 +112,14 @@ class InteriorPartView: UIView {
     @objc func boardTapped(_ sender : BoardTapGesture) {
         print("board Interior clicked")
         
-        print(sender.data)
         if let data = sender.data {
-            
             navigateDelegate?.navigateToBoardListPage(with: data)
         }
     }
     
     @objc func labelTapped(_ sender : BoardTapGesture) {
         print("boardInterior detail clicked")
-     
+        
         if let data = sender.data {
             navigateDelegate?.navigateToBoardDetailPage(with: data)
         }
