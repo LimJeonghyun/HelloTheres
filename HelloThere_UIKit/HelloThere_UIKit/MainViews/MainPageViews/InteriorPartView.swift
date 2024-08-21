@@ -9,7 +9,6 @@ import UIKit
 
 class InteriorPartView: UIView {
     let utils = MainPageCommonUtils()
-    let api = RequestApi()
     weak var navigateDelegate : NavigationDelegate?
     
     init(contentView: UIView, belowView: UIView) {
@@ -59,7 +58,7 @@ class InteriorPartView: UIView {
         contentView.addSubview(interiorBoardPart)
         
         
-        var contents = api.getRecentInteriorPost()
+        var contents = RequestApi.shared.getRecentInteriorPost()
         
         for i in 0...6 {
             
