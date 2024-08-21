@@ -51,6 +51,7 @@ Hello There은 이웃과 소통하기 위한 공동주택 커뮤니티 어플입
 <br>
            - before -                   - after -
 <br>
+
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/0875bf2a-8531-404e-9a3c-8656a223ef12" width="200" height="400">
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/ebc6d5f5-ce1e-483c-8c7a-ac1e51e00e91" width="200" height="400">
    
@@ -63,9 +64,12 @@ Hello There은 이웃과 소통하기 위한 공동주택 커뮤니티 어플입
 이전 3달의 관리비 기록을 그래프로 확인할 수 있습니다   
 
 <br>
+    - before -              - after -
+<br>
 
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/e88a99be-45c2-44d5-ab48-d894afdaf03d" width="200" height="400">
-
+    
+<img src = "https://github.com/user-attachments/assets/7e2fe4e1-9f23-4441-a6fb-7436b4df886e" width="200" height="400">
 <br>
 <br>
 
