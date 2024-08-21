@@ -8,7 +8,6 @@
 import UIKit
 
 class MainPageCommonUtils {
-    let api = RequestApi()
     
     func boardTitle(partName : String) -> UIStackView {
         let titlePart = UIStackView()
@@ -154,7 +153,7 @@ class MainPageCommonUtils {
         title.minimumScaleFactor = 0.5
         title.textColor = UIColor(hexCode: "8F8F8F")
         title.textAlignment = .right
-        title.text =   str + api.getRecentPostTitle(boardName: boardName)
+        title.text =   str + RequestApi.shared.getRecentPostTitle(boardName: boardName)
         
         
         smallBoard.addArrangedSubview(icon)

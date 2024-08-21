@@ -8,7 +8,6 @@
 import UIKit
 
 class AppBarView: UIStackView {
-    let api = RequestApi()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,7 +47,7 @@ class AppBarView: UIStackView {
         logo.image = UIImage(named: "logo_noHand")
         logo.contentMode = .scaleAspectFit
         
-        let userAddressInfo = api.getUserAddress()
+        let userAddressInfo = RequestApi.shared.getUserAddress()
         let aptNameLabel = UILabel()
         aptNameLabel.text = userAddressInfo[0]
         aptNameLabel.textAlignment = .left

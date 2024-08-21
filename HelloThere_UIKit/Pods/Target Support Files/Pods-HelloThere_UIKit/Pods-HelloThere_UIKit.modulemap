@@ -1,0 +1,6 @@
+framework module Pods_HelloThere_UIKit {
+  umbrella header "Pods-HelloThere_UIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

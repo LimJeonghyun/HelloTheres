@@ -9,7 +9,6 @@ import UIKit
 
 class GarageSalePartView: UIStackView {
     let utils = MainPageCommonUtils()
-    let api = RequestApi()
     weak var navigateDelegate : NavigationDelegate?
     
     init(contentView: UIView, belowView: UIView) {
@@ -55,7 +54,7 @@ class GarageSalePartView: UIStackView {
         self.addArrangedSubview(boardScrollView)
         contentView.addSubview(self)
         
-        var contents = api.getRecentGarageSalePost()
+        var contents = RequestApi.shared.getRecentGarageSalePost()
         
         for i in 0...6 {
             let contentView = utils.createGarageSaleContentView(imageName:contents[i][0], text: contents[i][1])

@@ -19,6 +19,17 @@ class MainPageViewController: UIViewController, NavigationDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         // 상단 navigationBar로 인한 빈 공간 없애기
         
+        loadUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        scrollContentView.subviews.forEach { $0.removeFromSuperview() }
+        
+        loadUI()
+    }
+    
+    func loadUI() {
         let appBarView = AppBarView()
         appBarView.isUserInteractionEnabled = true
         view.addSubview(appBarView)

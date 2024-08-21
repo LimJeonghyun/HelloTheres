@@ -8,6 +8,13 @@
 import UIKit
 
 class RequestApi {
+    static let shared = RequestApi()
+    
+    private init() {}
+    
+    var data = [101000, 109000, -1]
+    var payState = false
+    
     // AppBarView
     // 유저의 주소를 읽어오는 API함수
     func getUserAddress() -> [String]{
@@ -34,7 +41,6 @@ class RequestApi {
     
     // 미납 / 완납 이미지 표시를 위한 미남 / 완납 여부 API로 읽어오기
     func getMyMaintenanceState() -> UIImageView {
-        var payState = true
         // API로 미납 / 완납 여부를 받아와서 payState 변수로 저장
         
         let stateImage = UIImageView()
@@ -50,7 +56,11 @@ class RequestApi {
     
     // 관리비를 API로 불러오기
     func getMyMaintenanceCost() -> UILabel{
-        var cost = "15799"
+        var cost = String(data[2])
+        
+        if (data[2] == -1) {
+            cost = "103000"
+        }
         
         let attributedString = NSMutableAttributedString(string: cost + " 원")
         let stringLength = attributedString.length
@@ -99,5 +109,73 @@ class RequestApi {
         posts.append(["icon_morePost", " "])
         
         return posts
+    }
+    
+    // 현재 달에 해당하는 관리비 데이터가 있으면 가져오기
+    func getMonthFee(currentMonth : Int) -> String {
+        var fee : String
+        if (data[2] == -1 || currentMonth != 8) {
+            fee = ""
+        } else {
+            fee = String(data[2])
+        }
+        
+        print("checkPoing : \(fee)")
+        return fee
+    }
+    
+    // 현재 달에 해당하는 관리비와 완납 여부를 db로 전달
+    func postMonthFeeData(fee : String, isPaid : Bool) {
+        if (!fee.isEmpty){
+            print("입력된 값 : " + fee)
+            data[2] = Int(fee) ?? -1
+            print(data[2])
+        }
+        if (isPaid){
+            payState = isPaid
+            print("완납")
+        }else{
+            payState = isPaid
+            print("미납")
+        }
+        
+        print("checkPoint : \(data[2]) \(payState)")
+    }
+    
+    // 현재달을 포함하여 3개월 관리비 데이터
+    func getMonthlyFeeData(currentMonth : Int) -> [Int] {
+        var monthFeeData : [Int] = []
+        var index = 0
+        
+        print("checkPoint \(data[2])")
+        for i in currentMonth - 2 ... currentMonth {
+            monthFeeData.append(data[index])
+            index+=1
+        }
+        
+        return monthFeeData
+    }
+    
+    // 이전달과 비교하여 현재 달의 관리비가 올랐는지 하락했는지 데이터를 받아오기
+    func getMonthlyFeeDiff(currentMonth : Int) -> [String] {
+        var feeData = ["down", "up", ""]
+        
+        if (data[1] >= data[2]) {
+            feeData[2] = "down"
+        } else {
+            feeData[2] = "up"
+        }
+        
+        print("checkPoint \(feeData[2])")
+        
+        var monthFeeData : [String] = []
+        var index = 0
+        
+        for i in currentMonth - 2 ... currentMonth {
+            monthFeeData.append(feeData[index])
+            index+=1
+        }
+        
+        return monthFeeData
     }
 }

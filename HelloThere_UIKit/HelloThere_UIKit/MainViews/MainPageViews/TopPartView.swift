@@ -8,7 +8,6 @@
 import UIKit
 
 class TopPartView: UIView, UIGestureRecognizerDelegate {
-    let api = RequestApi()
     var popularPosts : [String] = []
     weak var navigationDelegate : NavigationDelegate?
     
@@ -31,6 +30,7 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         topPartStackView.translatesAutoresizingMaskIntoConstraints = false
         topPartStackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         topPartStackView.isLayoutMarginsRelativeArrangement = true
+        topPartStackView.isUserInteractionEnabled = true
         
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         popularBoardListPart.translatesAutoresizingMaskIntoConstraints = false
         
         
-        popularPosts = api.getPopularPosts()
+        popularPosts = RequestApi.shared.getPopularPosts()
         for postTitle in popularPosts {
             let titleLabel = UILabel()
             titleLabel.text = postTitle
@@ -76,18 +76,20 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         
         topPartStackView.addArrangedSubview(popularBoardPart)
         
+        
         let maintenancePart = UIStackView()
         maintenancePart.axis = .vertical
         maintenancePart.alignment = .center
         maintenancePart.spacing = 30
         maintenancePart.distribution = .fillProportionally
         maintenancePart.translatesAutoresizingMaskIntoConstraints = false
+//        maintenancePart.backgroundColor = .white
         
         maintenancePart.addArrangedSubview(titlePart(titlename: "이달의 관리비", icon: "icon_maintenanceCost"))
         
         
-        maintenancePart.addArrangedSubview(api.getMyMaintenanceState())
-        maintenancePart.addArrangedSubview(api.getMyMaintenanceCost())
+        maintenancePart.addArrangedSubview(RequestApi.shared.getMyMaintenanceState())
+        maintenancePart.addArrangedSubview(RequestApi.shared.getMyMaintenanceCost())
         
         
         topPartStackView.addArrangedSubview(maintenancePart)
