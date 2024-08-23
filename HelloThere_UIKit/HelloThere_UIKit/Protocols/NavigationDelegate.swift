@@ -11,6 +11,11 @@ class BoardTapGesture : UITapGestureRecognizer {
     var data : String?
 }
 
+class PostTapGesture: UITapGestureRecognizer {
+    var boardName: String?
+    var postTitle: String?
+}
+
 protocol NavigationDelegate : AnyObject {
     func navigateToNextPage()
     func navigateToBoardDetailPage(with title : String)
@@ -18,4 +23,6 @@ protocol NavigationDelegate : AnyObject {
     // 게시글 페이지
     func navigateToBoardListPage(with boardName : String)
     // 게시판 리스트 페이지
+    func postDetailNavigateToNextPage(boardName: String, postName : String)
+    // 게시글 디테일 페이지
 }

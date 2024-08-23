@@ -147,7 +147,7 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
     @objc func labelTapped(_ sender: BoardTapGesture) {
         print("toppart label clicked")
         if let data = sender.data {
-            navigationDelegate?.navigateToBoardDetailPage(with: data)
+            navigationDelegate?.postDetailNavigateToNextPage(boardName: "인기 게시판", postName: data)
         }
     }
     

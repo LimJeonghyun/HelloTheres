@@ -7,6 +7,17 @@
 
 import UIKit
 
+struct Post {
+    let title : String
+    let content : String
+    let date : String
+    let views : Int
+    let comment : Int
+    let like : Int
+    let nickName : String
+}
+
+
 class RequestApi {
     static let shared = RequestApi()
     
@@ -14,6 +25,15 @@ class RequestApi {
     
     var data = [101000, 109000, -1]
     var payState = false
+    
+    var userPost:[Post] = []
+    var userPostFree:[Post] = []
+    var userPostConflic:[Post] = []
+    var userPostTool:[Post] = []
+    var userPostGarage:[Post] = []
+    var userPostInfo:[Post] = []
+    var userPostQuestion:[Post] = []
+    var userPostInterior:[Post] = []
     
     // AppBarView
     // 유저의 주소를 읽어오는 API함수
@@ -92,7 +112,7 @@ class RequestApi {
         var posts : [[String]] = []
         
         for i in 0...5 {
-            posts.append(["test1", "설명 부분"])
+            posts.append(["test1", "\(i+1)번째 인텔이어"])
         }
         posts.append(["icon_morePost", " "])
         
@@ -104,7 +124,7 @@ class RequestApi {
         var posts : [[String]] = []
         
         for i in 0...5 {
-            posts.append(["test2", "설명 부분"])
+            posts.append(["test2", "\(i+1)번째 상품"])
         }
         posts.append(["icon_morePost", " "])
         
@@ -131,11 +151,11 @@ class RequestApi {
             data[2] = Int(fee) ?? -1
             print(data[2])
         }
+        
+        payState = isPaid
         if (isPaid){
-            payState = isPaid
             print("완납")
         }else{
-            payState = isPaid
             print("미납")
         }
         
@@ -177,5 +197,86 @@ class RequestApi {
         }
         
         return monthFeeData
+    }
+    
+    func getPosts(boardTitle : String) -> [Post] {
+        var posts = [
+            Post(title :"\(boardTitle) 첫 번째 게시물", content: "\(boardTitle)  첫 번째 게시물 내용", date : "2024-08-22 12:35", views : 3, comment: 3, like : 1, nickName : "닉네임 1"),
+            Post(title :"\(boardTitle) 첫 번째 게시물", content: "\(boardTitle)  첫 번째 게시물 내용", date : "2024-08-22 12:35", views : 3, comment: 3, like : 1, nickName : "닉네임 1"),
+            Post(title :"\(boardTitle) 두 번째 게시물", content: "\(boardTitle) 두 번째 게시물 내용", date : "2024-08-22 12:00", views : 10, comment: 3, like : 1, nickName : "닉네임 2"),
+            Post(title :"\(boardTitle) 세 번째 게시물", content: "\(boardTitle) 세 번째 게시물 내용", date : "2024-08-22 11:35", views : 0, comment: 3, like : 1, nickName : "닉네임 3"),
+            Post(title :"\(boardTitle) 네 번째 게시물", content: "\(boardTitle) 네 번째 게시물 내용", date : "2024-08-22 10:35", views : 1, comment: 3, like : 1, nickName : "닉네임 4"),
+            Post(title :"\(boardTitle) 다섯 번째 게시물", content: "\(boardTitle) 다섯 번째 게시물 내용", date : "2024-08-21 22:35", views : 5, comment: 3, like : 1, nickName : "닉네임 5"),
+            Post(title :"\(boardTitle) 여섯 번째 게시물", content: "\(boardTitle) 여섯 번째 게시물 내용", date : "2024-08-21 20:10", views : 7, comment: 3, like : 1, nickName : "닉네임 6"),
+            Post(title :"\(boardTitle) 일곱 번째 게시물", content: "\(boardTitle) 일곱 번째 게시물 내용", date : "2024-08-21 12:30", views : 24, comment: 3, like : 1, nickName : "닉네임 7"),
+            Post(title :"\(boardTitle) 여덟 번째 게시물", content: "\(boardTitle) 여덟 번째 게시물 내용", date : "2024-08-20 12:35", views : 2, comment: 3, like : 1, nickName : "닉네임 8"),
+            Post(title :"\(boardTitle) 아홉 번째 게시물2222222222", content: "\(boardTitle) 아홉 번째 게시물 내용222222222222", date : "2024-08-19 12:35", views : 10, comment: 3, like : 1, nickName : "닉네임 10"),
+            Post(title :"\(boardTitle) 열 번째 게시물", content: "\(boardTitle) 열 번째 게시물 내용", date : "2024-08-18 12:35", views : 9, comment: 3, like : 1, nickName : "닉네임 10")
+        ]
+        
+        var addPosts : [Post] = []
+        
+        if (boardTitle == "자유소통 게시판") {
+            for post in userPostFree.reversed() {
+                addPosts.append(post)
+            }
+        } else if (boardTitle == "갈등 소통 게시판"){
+            for post in userPostConflic.reversed() {
+                addPosts.append(post)
+            }
+        } else if (boardTitle == "공구/나눔 게시판"){
+            for post in userPostTool.reversed() {
+                addPosts.append(post)
+            }
+        } else if (boardTitle == "중고장터 게시판") {
+            for post in userPostGarage.reversed() {
+                addPosts.append(post)
+            }
+        } else if (boardTitle == "질문 게시판") {
+            for post in userPostQuestion.reversed() {
+                addPosts.append(post)
+            }
+        } else if (boardTitle == "정보공유 게시판") {
+            for post in userPostInfo.reversed() {
+                addPosts.append(post)
+            }
+        } else if (boardTitle == "오늘의 홈테리어") {
+            for post in userPostInterior.reversed() {
+                addPosts.append(post)
+            }
+        } else {
+            for post in userPost.reversed() {
+                addPosts.append(post)
+            }
+        }
+        
+        for post in posts {
+            addPosts.append(post)
+        }
+        
+        posts = addPosts
+        
+        print(posts)
+        
+        return posts
+    }
+    
+    func postPost(title : String, content : String, date : String, views : Int, comment : Int, like : Int, nickName : String, boardTitle : String)
+    {
+        if(boardTitle == "자유소통 게시판") {
+            userPostFree.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        } else if (boardTitle == "갈등 소통 게시판") {
+            userPostConflic.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        } else if (boardTitle == "공구/나눔 게시판") {
+            userPostTool.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        } else if (boardTitle == "정보공유 게시판") {
+            userPostInfo.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        } else if (boardTitle == "질문 게시판" ){
+            userPostQuestion.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        } else if (boardTitle == "오늘의 홈테리어") {
+            userPostInterior.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        } else {
+            userPost.append(Post(title: title, content: content, date: date, views: views, comment: comment, like: like, nickName: nickName))
+        }
     }
 }

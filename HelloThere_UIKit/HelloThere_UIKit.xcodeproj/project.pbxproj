@@ -18,6 +18,9 @@
 		433FA0A72C69EC3D00AC709F /* GarageSalePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FA0A62C69EC3D00AC709F /* GarageSalePartView.swift */; };
 		436BBF712C661D47006FB717 /* MainPageCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BBF702C661D47006FB717 /* MainPageCommonUtils.swift */; };
 		436BBF742C661DDE006FB717 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BBF732C661DDE006FB717 /* AppBarView.swift */; };
+		439D45832C78690A001D9FF5 /* PostUploadNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D45822C78690A001D9FF5 /* PostUploadNavigationDelegate.swift */; };
+		439D45862C786981001D9FF5 /* PostUploadPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D45852C786981001D9FF5 /* PostUploadPageViewController.swift */; };
+		439D45892C786C0A001D9FF5 /* BoardNavigationCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D45882C786C0A001D9FF5 /* BoardNavigationCustom.swift */; };
 		43B1B65B2C75A753002F5437 /* MonthlyFeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1B65A2C75A753002F5437 /* MonthlyFeeView.swift */; };
 		43B1B65D2C75A9FD002F5437 /* PaymentStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1B65C2C75A9FD002F5437 /* PaymentStatusView.swift */; };
 		43B1B65F2C75AD1E002F5437 /* MonthlyFeeGraphStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1B65E2C75AD1E002F5437 /* MonthlyFeeGraphStackView.swift */; };
@@ -71,6 +74,9 @@
 		433FA0A62C69EC3D00AC709F /* GarageSalePartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSalePartView.swift; sourceTree = "<group>"; };
 		436BBF702C661D47006FB717 /* MainPageCommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageCommonUtils.swift; sourceTree = "<group>"; };
 		436BBF732C661DDE006FB717 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
+		439D45822C78690A001D9FF5 /* PostUploadNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUploadNavigationDelegate.swift; sourceTree = "<group>"; };
+		439D45852C786981001D9FF5 /* PostUploadPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUploadPageViewController.swift; sourceTree = "<group>"; };
+		439D45882C786C0A001D9FF5 /* BoardNavigationCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardNavigationCustom.swift; sourceTree = "<group>"; };
 		43B1B65A2C75A753002F5437 /* MonthlyFeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyFeeView.swift; sourceTree = "<group>"; };
 		43B1B65C2C75A9FD002F5437 /* PaymentStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusView.swift; sourceTree = "<group>"; };
 		43B1B65E2C75AD1E002F5437 /* MonthlyFeeGraphStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyFeeGraphStackView.swift; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				43388EA22C7331B100E65FEA /* NavigationDelegate.swift */,
+				439D45822C78690A001D9FF5 /* PostUploadNavigationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -162,6 +169,8 @@
 		43388EA92C73348D00E65FEA /* BoardViews */ = {
 			isa = PBXGroup;
 			children = (
+				439D45872C786BF0001D9FF5 /* Utils */,
+				439D45842C78696C001D9FF5 /* BoardDetailViews */,
 				43388EAA2C7334B800E65FEA /* PostDetailViewController.swift */,
 				43388EAD2C73387C00E65FEA /* BoardListViewController.swift */,
 			);
@@ -197,6 +206,22 @@
 				433FA0A62C69EC3D00AC709F /* GarageSalePartView.swift */,
 			);
 			path = MainPageViews;
+			sourceTree = "<group>";
+		};
+		439D45842C78696C001D9FF5 /* BoardDetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				439D45852C786981001D9FF5 /* PostUploadPageViewController.swift */,
+			);
+			path = BoardDetailViews;
+			sourceTree = "<group>";
+		};
+		439D45872C786BF0001D9FF5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				439D45882C786C0A001D9FF5 /* BoardNavigationCustom.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		43C860F72C3D2168008A5A8A = {
@@ -531,11 +556,14 @@
 			files = (
 				43D135752C6615FE0024BCB1 /* ChatiingPageViewContoroller.swift in Sources */,
 				433FA0A72C69EC3D00AC709F /* GarageSalePartView.swift in Sources */,
+				439D45892C786C0A001D9FF5 /* BoardNavigationCustom.swift in Sources */,
 				43C86F292C6B18DE002C76C6 /* RequestApi.swift in Sources */,
 				43C861082C3D2168008A5A8A /* ViewController.swift in Sources */,
+				439D45832C78690A001D9FF5 /* PostUploadNavigationDelegate.swift in Sources */,
 				43C86F2B2C6B38BD002C76C6 /* TabBarCustom.swift in Sources */,
 				433FA0A12C69D2A800AC709F /* HexColor.swift in Sources */,
 				43388EAB2C7334B800E65FEA /* PostDetailViewController.swift in Sources */,
+				439D45862C786981001D9FF5 /* PostUploadPageViewController.swift in Sources */,
 				43B1B65F2C75AD1E002F5437 /* MonthlyFeeGraphStackView.swift in Sources */,
 				433FA0A52C69E96100AC709F /* InteriorPartView.swift in Sources */,
 				43D135772C66161F0024BCB1 /* MyPageViewController.swift in Sources */,

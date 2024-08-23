@@ -9,7 +9,10 @@ import UIKit
 
 class PostDetailViewController: UIViewController {
     
-    var receivedData: String?
+    var boardTitle: String = ""
+    var postTitle : String = ""
+    var direct = false
+    var post : Post = Post(title: "제목 없음", content: "내용 없음", date: "2024-08-22", views: 0, comment: 0, like: 0, nickName: "없음")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,7 @@ class PostDetailViewController: UIViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         
         let titleLabel = UILabel()
-        titleLabel.text = receivedData
+        titleLabel.text = boardTitle
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         titleLabel.textColor = UIColor(hexCode: "2BCBA5")
         titleLabel.sizeToFit()
