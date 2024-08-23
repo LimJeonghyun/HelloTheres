@@ -50,11 +50,16 @@ class RequestApi {
     //     TopPartView
     //     API로 인기 게시물 내용을 가져올 때 해당 함수를 사용
     //     지금은 메인 페이지에 올 때마다 갱신하지만 하루에 한번만 실행할 수 있도록 하는 부분도 고려해보기
-    func getPopularPosts() -> [String]{
-        var popularPosts : [String] = []
-        for i in 1...4 {
-            popularPosts.append("title" + String(i))
-        }
+    func getPopularPosts() -> [Post]{
+        var popularPosts = [
+            Post(title :"멋진 깜자의 이야기", content: "깜자는 멋쨍이에요\n더 멋진 깜자가 되기 위해 노력할게요", date : "2024-08-22 12:35", views : 33, comment: 0, like : 33, nickName : "멋진 깜자"),
+            Post(title :"깜자의 iOS 개발자 도전기", content: "사람들이 안하는데는 이유가 있는 것 같아요\n하지만 깜자는 앱등이니까! 계속해볼거에요\n개발자가 되어 나타날 깜자를 응원해주세요\n다음에 더 멋진 모습으로 만나요👋👋👋", date : "2024-08-22 22:35", views : 10, comment: 3, like : 5, nickName : "멋진 깜자"),
+            Post(title :"허숙희를 아세요?", content: "허숙희는 허스키를 귀엽게 부르는 말이에요!\n다들 아는 허숙희 하나씩 있지 않나요?!", date : "2024-08-23 14:35", views : 3, comment: 0, like : 2, nickName : "멋진 깜자"),
+            Post(title :"감자가 되기 위해 노력하는 깜자", content: "저는 말하는 감자도 아직 아닌 것 같아요\n말하는 감자가 되기 위해 노력하는 깜자를 지켜봐주세요!\n", date : "2024-08-22 12:35", views : 3, comment: 3, like : 3, nickName : "멋진 깜자"),
+        ]
+//        for i in 1...4 {
+//            popularPosts.append("\(i)번째 인기게시무" + String(i))
+//        }
         
         return popularPosts
     }
@@ -111,8 +116,10 @@ class RequestApi {
     func getRecentInteriorPost() -> [[String]]{
         var posts : [[String]] = []
         
+        
+        
         for i in 0...5 {
-            posts.append(["test1", "\(i+1)번째 인텔이어"])
+            posts.append(["interior\(i+1)", "\(i+1)번째 인테리어"])
         }
         posts.append(["icon_morePost", " "])
         
@@ -124,7 +131,7 @@ class RequestApi {
         var posts : [[String]] = []
         
         for i in 0...5 {
-            posts.append(["test2", "\(i+1)번째 상품"])
+            posts.append(["ggamza_goods\(i+1)", "\(i+1)번째 상품"])
         }
         posts.append(["icon_morePost", " "])
         

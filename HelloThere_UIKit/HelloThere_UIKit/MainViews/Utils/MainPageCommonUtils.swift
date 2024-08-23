@@ -19,16 +19,16 @@ class MainPageCommonUtils {
         titlePart.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:0)
         titlePart.isLayoutMarginsRelativeArrangement = true
         
-        let title1 = UILabel()
-        title1.text =  partName
-        title1.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        title1.textColor = UIColor(hexCode: "5D5D5D")
+        let titleLabel = UILabel()
+        titleLabel.text =  partName
+        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        titleLabel.textColor = UIColor(hexCode: "5D5D5D")
         
         let icon = UIImageView()
         icon.image = UIImage(named: "chervron-right")
         icon.contentMode = .scaleAspectFit
         
-        titlePart.addArrangedSubview(title1)
+        titlePart.addArrangedSubview(titleLabel)
         titlePart.addArrangedSubview(icon)
         
         return titlePart

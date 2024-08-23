@@ -8,6 +8,7 @@
 import UIKit
 
 class MainPageViewController: UIViewController, NavigationDelegate {
+
     
     var hasLoadedUI = false
     
@@ -159,6 +160,14 @@ class MainPageViewController: UIViewController, NavigationDelegate {
         nextViewController.direct = true
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
+    
+    func postDetailNavigateToNextPageWithPost(boardName: String, postName: Post) {
+        let nextViewController = PostDetailViewController()
+        nextViewController.boardTitle = boardName
+        nextViewController.post = postName
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
     
 }
 

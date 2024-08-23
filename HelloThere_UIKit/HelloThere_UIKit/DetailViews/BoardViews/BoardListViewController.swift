@@ -19,7 +19,7 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
         self.view.backgroundColor = .white
         self.tabBarController?.tabBar.isHidden = true
         
-        tableView.backgroundColor = .gray
+        tableView.backgroundColor = .white
         
         loadUI()
     }
@@ -246,7 +246,7 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func navigatePostUploadPage() {
         let nextViewController = PostUploadPageViewController()
-        nextViewController.boardType = boardTitle
+        nextViewController.boardTitle = boardTitle
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     

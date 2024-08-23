@@ -8,8 +8,12 @@
 import UIKit
 
 class TopPartView: UIView, UIGestureRecognizerDelegate {
-    var popularPosts : [String] = []
+    var popularPosts : [Post] = []
     weak var navigationDelegate : NavigationDelegate?
+    
+    private var maintenanceStateImageView: UIImageView!
+    private var maintenanceCostLabel: UILabel!
+    
     
     init(contentView: UIView) {
         super.init(frame: .zero)
@@ -56,15 +60,16 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         
         
         popularPosts = RequestApi.shared.getPopularPosts()
-        for postTitle in popularPosts {
+        for post in popularPosts {
             let titleLabel = UILabel()
-            titleLabel.text = postTitle
+            titleLabel.text = post.title
             titleLabel.font = UIFont.systemFont(ofSize: 11)
             titleLabel.textColor = UIColor(hexCode: "5D5D5D")
             
             titleLabel.isUserInteractionEnabled = true
-            let tapGestureLabel = BoardTapGesture(target : self, action : #selector(labelTapped(_:)))
-            tapGestureLabel.data = postTitle
+            let tapGestureLabel = PostTapGesture(target : self, action : #selector(labelTapped(_:)))
+            tapGestureLabel.boardName = "인기 게시글"
+            tapGestureLabel.postInfo = post
             titleLabel.addGestureRecognizer(tapGestureLabel)
             
             popularBoardListPart.addArrangedSubview(titleLabel)
@@ -83,11 +88,16 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         maintenancePart.spacing = 30
         maintenancePart.distribution = .fillProportionally
         maintenancePart.translatesAutoresizingMaskIntoConstraints = false
-//        maintenancePart.backgroundColor = .white
+        //        maintenancePart.backgroundColor = .white
         
         maintenancePart.addArrangedSubview(titlePart(titlename: "이달의 관리비", icon: "icon_maintenanceCost"))
         
         
+        //        maintenanceStateImageView.image = RequestApi.shared.getMyMaintenanceState().image
+        //        maintenanceCostLabel.attributedText = RequestApi.shared.getMyMaintenanceCost().attributedText
+        //
+        //        maintenancePart.addArrangedSubview(maintenanceStateImageView)
+        //        maintenancePart.addArrangedSubview(maintenanceCostLabel)
         maintenancePart.addArrangedSubview(RequestApi.shared.getMyMaintenanceState())
         maintenancePart.addArrangedSubview(RequestApi.shared.getMyMaintenanceCost())
         
@@ -118,6 +128,10 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         ])
     }
     
+//    func updateContent() {
+//        maintenanceStateImageView.image = RequestApi.shared.getMyMaintenanceState().image
+//        maintenanceCostLabel.attributedText = RequestApi.shared.getMyMaintenanceCost().attributedText
+//    }
     
     func titlePart(titlename : String, icon : String) -> UIStackView {
         let titlePart = UIStackView()
@@ -144,10 +158,10 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         return titlePart
     }
     
-    @objc func labelTapped(_ sender: BoardTapGesture) {
+    @objc func labelTapped(_ sender: PostTapGesture) {
         print("toppart label clicked")
-        if let data = sender.data {
-            navigationDelegate?.postDetailNavigateToNextPage(boardName: "인기 게시판", postName: data)
+        if let data = sender.postInfo, let title = sender.boardName {
+            navigationDelegate?.postDetailNavigateToNextPageWithPost(boardName: title, postName: data)
         }
     }
     
