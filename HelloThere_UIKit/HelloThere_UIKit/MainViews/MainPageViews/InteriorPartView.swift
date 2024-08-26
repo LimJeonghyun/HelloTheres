@@ -120,7 +120,7 @@ class InteriorPartView: UIView {
         print("boardInterior detail clicked")
         
         if let data = sender.data {
-            navigateDelegate?.navigateToBoardDetailPage(with: data)
+            navigateDelegate?.postDetailNavigateToNextPage(boardName: "나만의 홈테리어", postName: data)
         }
     }
 }

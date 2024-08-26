@@ -16,7 +16,7 @@ extension MaintenanceMainViewController {
         monthlyGraphStackView.spacing = 10
         monthlyGraphStackView.distribution = .fillProportionally
         monthlyGraphStackView.translatesAutoresizingMaskIntoConstraints = false
-        //        monthlyGraphStackView.backgroundColor = .yellow
+        monthlyGraphStackView.backgroundColor = .white
         
         
         let titleLabel = UILabel()

@@ -9,8 +9,12 @@ import UIKit
 
 class MainPageViewController: UIViewController, NavigationDelegate {
     
+    
+    var hasLoadedUI = false
+    
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +28,27 @@ class MainPageViewController: UIViewController, NavigationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        scrollContentView.subviews.forEach { $0.removeFromSuperview() }
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        loadUI()
+       
+        if hasLoadedUI {
+            scrollContentView.subviews.forEach { $0.removeFromSuperview() }
+            loadUI()
+        }
+    }
+    
+    func refreshData() {
+        // 여기에서 필요한 데이터만 새로 갱신
+        // 예를 들어, 서버에서 데이터를 새로 불러오는 작업
+        let topPartView = TopPartView(contentView:scrollContentView)
+        topPartView.navigationDelegate = self
+        topPartView.translatesAutoresizingMaskIntoConstraints = false
+        scrollContentView.addSubview(topPartView)
     }
     
     func loadUI() {
+        hasLoadedUI = true
+        
         let appBarView = AppBarView()
         appBarView.isUserInteractionEnabled = true
         view.addSubview(appBarView)
@@ -126,16 +145,31 @@ class MainPageViewController: UIViewController, NavigationDelegate {
         print("boardDetailPage here")
         
         let nextViewController = PostDetailViewController()
-        nextViewController.receivedData = title
-        self.navigationController?.pushViewController(nextViewController, animated: false)
+        nextViewController.boardTitle = title
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     func navigateToBoardListPage(with boardName: String) {
         print("boardListPage here")
         
         let nextViewController = BoardListViewController()
-        nextViewController.receivedData = boardName
-        self.navigationController?.pushViewController(nextViewController, animated: false)
+        nextViewController.boardTitle = boardName
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    func postDetailNavigateToNextPage(boardName: String, postName: String) {
+        let nextViewController = PostDetailViewController()
+        nextViewController.boardTitle = boardName
+        nextViewController.postTitle = postName
+        nextViewController.direct = true
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    func postDetailNavigateToNextPageWithPost(boardName: String, postName: Post) {
+        let nextViewController = PostDetailViewController()
+        nextViewController.boardTitle = boardName
+        nextViewController.post = postName
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
 

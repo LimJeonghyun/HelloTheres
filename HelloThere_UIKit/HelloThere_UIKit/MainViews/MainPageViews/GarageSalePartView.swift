@@ -113,7 +113,7 @@ class GarageSalePartView: UIStackView {
         print("boardGarageSlae detail clicked")
         
         if let data = sender.data {
-            navigateDelegate?.navigateToBoardDetailPage(with: data)
+            navigateDelegate?.postDetailNavigateToNextPage(boardName: "중고 장터", postName: data)
         }
     }
 }
