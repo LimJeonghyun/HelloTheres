@@ -77,10 +77,18 @@ Hello There은 이웃과 소통하기 위한 공동주택 커뮤니티 어플입
 자유 소통 게시판, 갈등 소통 게시판, 공구/나눔 게시판, 중고장터 게시판, 정보공유 게시판, 질문 게시판으로 7가지의 게시판이 있습니다   
 
 <br>
-
+- before - 
+<br>
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/e77a1ac1-e25b-404c-be29-134cf10419f8" width="200" height="400">
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/85e05728-9327-44fa-829f-108a32d7f0ce" width="200" height="400">
 <img src = "https://github.com/UMC-Hello-There/HelloThere_iOS_Edit/assets/61608298/94114b89-dff8-49fc-ac7b-b878ae1090d4" width="200" height="400">
+<br>
+<br>
+- after - 
+<br>
+<img src = "https://github.com/user-attachments/assets/31c2961b-d4bf-4fb9-8da9-fb79f5b3374a" width="200" height="400">
+            
+<img src = "https://github.com/user-attachments/assets/8bda52c2-b515-477f-b7b3-53a6f5676614" width="200" height="400">
 
 <br>
 <br>
