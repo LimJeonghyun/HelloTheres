@@ -8,12 +8,13 @@
 import UIKit
 
 class MainPageViewController: UIViewController, NavigationDelegate {
-
+    
     
     var hasLoadedUI = false
     
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,11 @@ class MainPageViewController: UIViewController, NavigationDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+       
         if hasLoadedUI {
-            refreshData()
+            scrollContentView.subviews.forEach { $0.removeFromSuperview() }
+            loadUI()
         }
     }
     
@@ -167,8 +171,6 @@ class MainPageViewController: UIViewController, NavigationDelegate {
         nextViewController.post = postName
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
-    
 }
 
 

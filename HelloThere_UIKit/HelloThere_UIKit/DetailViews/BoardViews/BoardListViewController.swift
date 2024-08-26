@@ -8,7 +8,7 @@
 import UIKit
 
 class BoardListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NavigationGoBackDelegate, PostUploadNavigationDelegate {
-
+    
     var boardTitle: String = ""
     var posts : [Post] = []
     
@@ -41,6 +41,7 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
     
     func loadUI(){
         posts = RequestApi.shared.getPosts(boardTitle: boardTitle)
@@ -76,7 +77,7 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
         
         return posts.count
     }
-
+    
     // 각 셀에 표시할 데이터를 반환
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 기본 셀 생성
@@ -110,7 +111,7 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
         let post = posts[indexPath.row]
         
         let truncatedText = post.title.count > 18 ? String(post.title.prefix(18)) + "..." : post.title
-
+        
         // 글 제목 레이블 생성
         let titleLabel = UILabel()
         titleLabel.text = truncatedText
@@ -164,7 +165,7 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
         if let pastDate = dateFormatter.date(from: post.date) {
             // 현재 시간
             let currentDate = Date()
-
+            
             // 시간 차이 계산
             let timeInterval = currentDate.timeIntervalSince(pastDate)
             let hoursDifference = Int(timeInterval / 3600)
@@ -249,12 +250,10 @@ class BoardListViewController: UIViewController, UITableViewDataSource, UITableV
         nextViewController.boardTitle = boardTitle
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
-    
 }
 
 #Preview {
-//        let vc = BoardListViewController()
+    //        let vc = BoardListViewController()
     let vc = ViewController()
     return vc
 }

@@ -14,6 +14,7 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
     var direct = false
     var post : Post = Post(title: "제목 없음", content: "내용 없음", date: "2024-08-22", views: 0, comment: 0, like: 0, nickName: "없음")
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
@@ -33,7 +34,7 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
         iconStackView.alignment = .leading
         iconStackView.spacing = 5
         iconStackView.translatesAutoresizingMaskIntoConstraints = false
-        //
+        
         //        // 글 제목 레이블 생성
         let titleLabel = UILabel()
         if (direct) {
@@ -42,29 +43,33 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
             titleLabel.text = post.title
         }
         
-        //        post.title
+        
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         titleLabel.textColor = UIColor(hexCode: "5D5D5D")
-        //
-        //
+        
+        
+        
         let commentIcon = UIImageView(image: UIImage(systemName: "bubble.left"))
         commentIcon.tintColor = UIColor(hexCode: "2BCBA5")
         commentIcon.translatesAutoresizingMaskIntoConstraints = false
         commentIcon.widthAnchor.constraint(equalToConstant: 16).isActive = true
         commentIcon.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
+        
+        
         let commentLabel = UILabel()
         commentLabel.text = String(post.comment)
         commentLabel.font = UIFont.systemFont(ofSize: 12)
         commentLabel.textColor = UIColor(hexCode: "2BCBA5")
-        //
-        //
+        
+        
         let likeIcon = UIImageView(image: UIImage(systemName: "hand.thumbsup"))
         likeIcon.tintColor = UIColor(hexCode: "FF7E55")
         likeIcon.translatesAutoresizingMaskIntoConstraints = false
         likeIcon.widthAnchor.constraint(equalToConstant: 16).isActive = true
         likeIcon.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        //
+
+        
         let likeLabel = UILabel()
         likeLabel.text = String(post.like)
         likeLabel.font = UIFont.systemFont(ofSize: 12)
@@ -87,21 +92,24 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
         
         view.addSubview(lineView)
         
+        
         let contentView = UIStackView()
         contentView.axis = .vertical
         contentView.spacing = 30
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         
         let userStack = UIStackView()
         userStack.axis = .horizontal
         userStack.spacing = 10
         userStack.translatesAutoresizingMaskIntoConstraints = false
         
+        
         let userNickname = UILabel()
         userNickname.text = post.nickName
-        //        post.nickName
         userNickname.textColor = UIColor(hexCode: "2BCBA5")
         userNickname.font = UIFont.systemFont(ofSize: 12)
+        
         
         let userWritingTime = UILabel()
         userWritingTime.text = "\(post.date) 작성"
@@ -143,6 +151,7 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
         
         view.addSubview(contentView)
         
+        
         for i in 0...6 {
             let contentView =  UIImageView()
             contentView.image = UIImage(named: "icon_noPic")
@@ -162,7 +171,6 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
             contentView.addGestureRecognizer(tapGesture)
-            //            contentView.addGestureRecognizer(tapGestureLabel)
         }
         
         
@@ -171,8 +179,6 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
         underLineView.backgroundColor = UIColor(hexCode: "F1F1F1")
         
         view.addSubview(underLineView)
-        
-        
         
         
         
@@ -219,11 +225,13 @@ class PostDetailViewController: UIViewController, NavigationGoBackDelegate {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
     
     func navigateGoBack() {
         self.navigationController?.popViewController(animated: true)

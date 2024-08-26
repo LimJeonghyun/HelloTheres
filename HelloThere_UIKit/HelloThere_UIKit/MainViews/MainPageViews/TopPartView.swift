@@ -11,6 +11,7 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
     var popularPosts : [Post] = []
     weak var navigationDelegate : NavigationDelegate?
     
+    private var popularBoardListPart = UIStackView()
     private var maintenanceStateImageView: UIImageView!
     private var maintenanceCostLabel: UILabel!
     
@@ -51,7 +52,7 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         popularBoardPart.translatesAutoresizingMaskIntoConstraints = false
         
         
-        let popularBoardListPart = UIStackView()
+
         popularBoardListPart.axis = .vertical
         popularBoardListPart.alignment = .leading
         popularBoardListPart.spacing = 15
@@ -169,4 +170,21 @@ class TopPartView: UIView, UIGestureRecognizerDelegate {
         print("toppart stackView clicked")
         navigationDelegate?.navigateToNextPage()
     }
+    
+    func updateContent() {
+           // Update popular posts
+           popularPosts = RequestApi.shared.getPopularPosts()
+           popularBoardListPart.arrangedSubviews.forEach { $0.removeFromSuperview() }
+           
+           for post in popularPosts {
+               let titleLabel = UILabel()
+               titleLabel.text = post.title
+               // Setup the titleLabel (e.g., fonts, colors, etc.)
+               popularBoardListPart.addArrangedSubview(titleLabel)
+           }
+           
+           // Update maintenance state and cost
+           maintenanceStateImageView.image = RequestApi.shared.getMyMaintenanceState().image
+           maintenanceCostLabel.attributedText = RequestApi.shared.getMyMaintenanceCost().attributedText
+       }
 }
